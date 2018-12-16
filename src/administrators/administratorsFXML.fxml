@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="administrators.AdministratorsController">
+   <children>
+      <TabPane layoutY="-2.0" prefHeight="720.0" prefWidth="1280.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Students">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <HBox layoutX="324.0" layoutY="-1.0" prefHeight="690.0" prefWidth="957.0">
+                           <children>
+                              <TableView fx:id="studenttable" prefHeight="690.0" prefWidth="959.0">
+                                <columns>
+                                  <TableColumn fx:id="firstnamecolumn" prefWidth="126.80514526367188" text="First Name" />
+                                  <TableColumn fx:id="lastnamecolumn" prefWidth="120.69476318359375" text="Last Name" />
+                                    <TableColumn fx:id="emailcolumn" prefWidth="142.08990478515625" text="Email" />
+                                    <TableColumn fx:id="departmentcolumn" prefWidth="111.4332275390625" text="Department" />
+                                    <TableColumn fx:id="termcolumn" prefWidth="51.7493896484375" text="Term" />
+                                    <TableColumn fx:id="dateofbirthcolumn" prefWidth="109.99456787109375" text="Date Of Birth" />
+                                    <TableColumn fx:id="payingcompanycolumn" prefWidth="131.5762939453125" text="Paying Company" />
+                                    <TableColumn fx:id="acperformancecolumn" prefWidth="164.20306396484375" text="Ac. performance" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </HBox>
+                        <VBox layoutX="-2.0" prefHeight="688.0" prefWidth="326.0">
+                           <children>
+                              <Label prefHeight="32.0" prefWidth="326.0" text="Add Students">
+                                 <padding>
+                                    <Insets left="50.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="firstname" promptText="First Name">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </TextField>
+                              <TextField fx:id="lastname" layoutX="10.0" layoutY="42.0" promptText="Last Name">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </TextField>
+                              <TextField fx:id="email" layoutX="10.0" layoutY="69.0" promptText="Email">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </TextField>
+                              <DatePicker fx:id="dateofbirth" prefHeight="27.0" prefWidth="326.0" promptText="Date of Birth">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </DatePicker>
+                              <TextField fx:id="department" layoutX="10.0" layoutY="96.0" promptText="Department">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </TextField>
+                              <TextField fx:id="term" layoutX="10.0" layoutY="123.0" promptText="Term">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </TextField>
+                              <TextField fx:id="payingcompany" layoutX="10.0" layoutY="150.0" promptText="Paying Company">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </TextField>
+                              <TextField fx:id="acperformance" layoutX="10.0" layoutY="96.0" promptText="Ac. performance">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </TextField>
+                              <Button fx:id="addStudentsButton" mnemonicParsing="false" onAction="#addStudent" prefHeight="27.0" prefWidth="298.0" text="Add Student" />
+                              <Button fx:id="clearFieldsButton" mnemonicParsing="false" onAction="#clearFields" prefHeight="27.0" prefWidth="394.0" text="Clear Fields" />
+                              <Label prefHeight="17.0" prefWidth="363.0" />
+                              <Label prefHeight="25.0" prefWidth="296.0" text="Delete Student">
+                                 <padding>
+                                    <Insets left="50.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="firstNameToDelete" promptText="First Name" />
+                              <TextField fx:id="lastNameToDelete" promptText="Last Name" />
+                              <Button fx:id="deleteStudent" mnemonicParsing="false" onAction="#deleteStudent" prefHeight="27.0" prefWidth="375.0" text="Delete Student" />
+                              <Label prefHeight="39.0" prefWidth="296.0" />
+                              <Button fx:id="loadDataButton" mnemonicParsing="false" onAction="#loadStudentData" prefHeight="27.0" prefWidth="322.0" text="Load Data" />
+                           </children>
+                           <padding>
+                              <Insets left="15.0" right="15.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Teachers">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <HBox layoutX="412.0" prefHeight="691.0" prefWidth="869.0">
+                           <children>
+                              <TableView fx:id="teacherTable" prefHeight="691.0" prefWidth="939.0">
+                                <columns>
+                                  <TableColumn fx:id="teacherFNameColumn" prefWidth="141.08242797851562" text="First Name" />
+                                  <TableColumn fx:id="teacherLNameColumn" prefWidth="135.91751098632812" text="Last Name" />
+                                    <TableColumn fx:id="teacherEmailColumn" prefWidth="150.841796875" text="Email" />
+                                    <TableColumn fx:id="teacherSalaryColumn" prefWidth="140.122314453125" text="Salary" />
+                                    <TableColumn fx:id="teacherDegreeColumn" prefWidth="156.4166259765625" text="Degree" />
+                                    <TableColumn fx:id="teacherSubjectColumn" prefWidth="145.0750732421875" text="Subject" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </HBox>
+                        <VBox layoutX="-1.0" prefHeight="691.0" prefWidth="415.0">
+                           <children>
+                              <Label fx:id="deleteTeacher" prefHeight="31.0" prefWidth="415.0" text="Add Teachers">
+                                 <padding>
+                                    <Insets left="50.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="teacherFirstName" promptText="First Name" />
+                              <TextField fx:id="teacherLastName" layoutX="25.0" layoutY="41.0" promptText="Last Name" />
+                              <TextField fx:id="teacherEmail" layoutX="25.0" layoutY="68.0" promptText="Email" />
+                              <TextField fx:id="teacherSalary" layoutX="25.0" layoutY="95.0" promptText="Salary" />
+                              <TextField fx:id="teacherDegree" layoutX="25.0" layoutY="122.0" promptText="Degree" />
+                              <TextField fx:id="teacherSubject" layoutX="25.0" layoutY="149.0" promptText="Subject" />
+                              <Button fx:id="addTeacherButton" mnemonicParsing="false" onAction="#addTeacher" prefHeight="27.0" prefWidth="455.0" text="Add Teacher" />
+                              <Button fx:id="clearTeacherFieldsButton" mnemonicParsing="false" onAction="#clearTeacherFields" prefHeight="27.0" prefWidth="486.0" text="Clear Fields" />
+                              <Label prefHeight="28.0" prefWidth="385.0" />
+                              <Label prefHeight="25.0" prefWidth="296.0" text="Delete Teacher">
+                                 <padding>
+                                    <Insets left="50.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="getTeacherFirstNameToDelete" promptText="First Name" />
+                              <TextField fx:id="getTeacherLastNameToDelete" promptText="Last Name" />
+                              <Button fx:id="deleteTeacher" mnemonicParsing="false" onAction="#deleteTeacher" prefHeight="27.0" prefWidth="420.0" text="Delete Teacher" />
+                              <Label prefHeight="32.0" prefWidth="385.0" />
+                              <Button fx:id="loadTeacherButton" mnemonicParsing="false" onAction="#loadTeacherData" prefHeight="0.0" prefWidth="421.0" text="Load Data" />
+                           </children>
+                           <padding>
+                              <Insets left="15.0" right="15.0" />
+                           </padding>
+                        </VBox>
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Administrative staff">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <HBox prefHeight="691.0" prefWidth="869.0" />
+                        <VBox layoutX="-6.0" prefHeight="691.0" prefWidth="421.0">
+                           <children>
+                              <Label prefHeight="31.0" prefWidth="415.0" text="Add Administrative staff">
+                                 <padding>
+                                    <Insets left="50.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="adstaffFName" promptText="First Name" />
+                              <TextField fx:id="adstaffLName" layoutX="25.0" layoutY="41.0" promptText="Last Name" />
+                              <TextField fx:id="adstaffEmail" layoutX="25.0" layoutY="68.0" promptText="Email" />
+                              <TextField fx:id="adstaffSalary" layoutX="25.0" layoutY="95.0" promptText="Salary" />
+                              <TextField fx:id="adstaffDepartment" layoutX="25.0" layoutY="122.0" promptText="Department" />
+                              <Button fx:id="addAdStaffButton" mnemonicParsing="false" onAction="#addAdStaff" prefHeight="27.0" prefWidth="455.0" text="Add Manager" />
+                              <Button fx:id="clearAdStaffButton" mnemonicParsing="false" onAction="#clearAdStaffFields" prefHeight="27.0" prefWidth="486.0" text="Clear Fields" />
+                              <Label prefHeight="37.0" prefWidth="34.0" />
+                              <Label prefHeight="25.0" prefWidth="296.0" text="Delete Manager">
+                                 <padding>
+                                    <Insets left="50.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="adStaffFnameToDelete" promptText="First Name" />
+                              <TextField fx:id="adStaffLnameToDelete" promptText="Last Name" />
+                              <Button fx:id="deleteManager" mnemonicParsing="false" onAction="#deleteManager" prefHeight="27.0" prefWidth="420.0" text="Delete Manager" />
+                              <Label prefHeight="31.0" prefWidth="34.0" />
+                              <Button fx:id="loadAdStaffButton" mnemonicParsing="false" onAction="#loadAdStaffData" prefHeight="0.0" prefWidth="421.0" text="Load Data" />
+                           </children>
+                           <padding>
+                              <Insets left="15.0" right="15.0" />
+                           </padding>
+                        </VBox>
+                        <TableView fx:id="adstaffTable" layoutX="410.0" prefHeight="692.0" prefWidth="871.0">
+                           <columns>
+                              <TableColumn fx:id="adstaffFNameColumn" prefWidth="173.68441772460938" text="First Name" />
+                              <TableColumn fx:id="adstaffLNameColumn" prefWidth="167.3155517578125" text="Last Name" />
+                              <TableColumn fx:id="adstaffEmailColumn" prefWidth="188.32305908203125" text="Email" />
+                              <TableColumn fx:id="adstaffSalaryColumn" prefWidth="156.37054443359375" text="Salary" />
+                              <TableColumn fx:id="adstaffDepartmentColumn" prefWidth="185.87451171875" text="Department" />
+                           </columns>
+                        </TableView>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+            <Tab text="Partner Companies">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <HBox layoutX="410.0" layoutY="-2.0" prefHeight="693.0" prefWidth="871.0">
+                           <children>
+                              <TableView fx:id="partnerTable" prefHeight="693.0" prefWidth="877.0">
+                                <columns>
+                                  <TableColumn fx:id="partnerApellativeColumn" prefWidth="138.92391967773438" text="Appellative" />
+                                  <TableColumn fx:id="partnerRequisiteColumn" prefWidth="234.32958984375" text="Requisite" />
+                                    <TableColumn fx:id="partnerContPersonColumn" minWidth="1.6058349609375" prefWidth="253.17041015625" text="Contact Person" />
+                                    <TableColumn fx:id="partnerContNumberColumn" minWidth="1.6058349609375" prefWidth="246.44683837890625" text="Contact Number" />
+                                </columns>
+                              </TableView>
+                           </children>
+                        </HBox>
+                        <VBox prefHeight="690.0" prefWidth="410.0">
+                           <padding>
+                              <Insets left="15.0" right="15.0" />
+                           </padding>
+                           <children>
+                              <Label prefHeight="35.0" prefWidth="436.0" text="Add Partner Companies">
+                                 <padding>
+                                    <Insets left="50.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="partnerApellative" promptText="Appellative" />
+                              <TextField fx:id="partnerRequisite" layoutX="25.0" layoutY="45.0" promptText="Requisite" />
+                              <TextField fx:id="partnerContPerson" layoutX="25.0" layoutY="45.0" promptText="Contact Person" />
+                              <TextField fx:id="partnerContNumber" layoutX="25.0" layoutY="99.0" promptText="Contact Number" />
+                              <Button fx:id="addPartnerButton" mnemonicParsing="false" onAction="#addPartner" prefHeight="27.0" prefWidth="427.0" text="Add Company" />
+                              <Button fx:id="clearPartnerFields" mnemonicParsing="false" onAction="#clearPartnerFields" prefHeight="27.0" prefWidth="438.0" text="Clear Fields" />
+                              <Label prefHeight="37.0" prefWidth="34.0" />
+                              <Label prefHeight="25.0" prefWidth="296.0" text="Delete Partner">
+                                 <padding>
+                                    <Insets left="50.0" />
+                                 </padding>
+                              </Label>
+                              <TextField fx:id="partnerAppellativeToDelete" promptText="Appellative" />
+                              <Button fx:id="deletePartner" mnemonicParsing="false" onAction="#deletePartner" prefHeight="27.0" prefWidth="420.0" text="Delete Partner" />
+                              <Label prefHeight="39.0" prefWidth="34.0" />
+                              <Button fx:id="loadPartnerData" mnemonicParsing="false" onAction="#loadPartnerData" prefHeight="27.0" prefWidth="435.0" text="Load Data" />
+                           </children>
+                        </VBox>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
