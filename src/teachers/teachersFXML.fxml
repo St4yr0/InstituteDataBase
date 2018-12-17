@@ -7,12 +7,13 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="teachers.TeachersController">
    <children>
       <TabPane prefHeight="722.0" prefWidth="1279.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -22,13 +23,13 @@
                      <children>
                         <HBox layoutX="355.0" prefHeight="690.0" prefWidth="926.0">
                            <children>
-                              <TableView fx:id="studenttable" prefHeight="690.0" prefWidth="925.0">
+                              <TableView fx:id="teacherTable" prefHeight="690.0" prefWidth="925.0">
                                  <columns>
-                                    <TableColumn fx:id="firstnamecolumn" prefWidth="186.42288208007812" text="First Name" />
-                                    <TableColumn fx:id="lastnamecolumn" prefWidth="139.57711791992188" text="Last Name" />
-                                    <TableColumn fx:id="departmentcolumn" prefWidth="169.2515869140625" text="Email" />
-                                    <TableColumn fx:id="termcolumn" prefWidth="154.78192138671875" text="Degree" />
-                                    <TableColumn fx:id="acperformancecolumn" prefWidth="275.11749267578125" text="Subject" />
+                                    <TableColumn fx:id="teacherFirstNameColumn" prefWidth="186.42288208007812" text="First Name" />
+                                    <TableColumn fx:id="teacherLastNameColumn" prefWidth="139.57711791992188" text="Last Name" />
+                                    <TableColumn fx:id="teacherEmailColumn" prefWidth="169.2515869140625" text="Email" />
+                                    <TableColumn fx:id="teacherDegreeColumn" prefWidth="154.78192138671875" text="Degree" />
+                                    <TableColumn fx:id="teacherSubjectColumn" prefWidth="275.11749267578125" text="Subject" />
                                  </columns>
                               </TableView>
                            </children>
@@ -44,43 +45,65 @@
                                  </font>
                               </Label>
                               <Label prefHeight="42.0" prefWidth="372.0" />
-                              <Label prefHeight="40.0" prefWidth="80.0" text="First Name:" />
-                              <Label prefHeight="28.0" prefWidth="354.0">
+                              <Label prefHeight="28.0" prefWidth="139.0" text="First Name:">
+                                 <font>
+                                    <Font name="Courier Bold" size="13.0" />
+                                 </font></Label>
+                              <Label fx:id="teacherFirstNameLabel" prefHeight="28.0" prefWidth="354.0">
                                  <VBox.margin>
                                     <Insets left="20.0" />
                                  </VBox.margin>
                               </Label>
-                              <Label layoutX="10.0" layoutY="125.0" prefHeight="40.0" prefWidth="80.0" text="Last Name:" />
-                              <Label layoutX="25.0" layoutY="165.0" prefHeight="28.0" prefWidth="331.0">
+                              <Label layoutX="10.0" layoutY="125.0" prefHeight="28.0" prefWidth="80.0" text="Last Name:">
+                                 <font>
+                                    <Font name="Courier Bold" size="13.0" />
+                                 </font></Label>
+                              <Label fx:id="teacherLastNameLabel" layoutX="25.0" layoutY="165.0" prefHeight="28.0" prefWidth="331.0">
                                  <VBox.margin>
                                     <Insets left="20.0" />
                                  </VBox.margin>
                               </Label>
-                              <Label layoutX="10.0" layoutY="165.0" prefHeight="40.0" prefWidth="80.0" text="Email:" />
-                              <Label layoutX="25.0" layoutY="233.0" prefHeight="28.0" prefWidth="331.0">
+                              <Label layoutX="10.0" layoutY="165.0" prefHeight="28.0" prefWidth="80.0" text="Email:">
+                                 <font>
+                                    <Font name="Courier Bold" size="13.0" />
+                                 </font></Label>
+                              <Label fx:id="teacherEmailLabel" layoutX="25.0" layoutY="233.0" prefHeight="28.0" prefWidth="331.0">
                                  <VBox.margin>
                                     <Insets left="20.0" />
                                  </VBox.margin>
                               </Label>
-                              <Label layoutX="10.0" layoutY="205.0" prefHeight="40.0" prefWidth="80.0" text="Salary:" />
-                              <Label layoutX="25.0" layoutY="301.0" prefHeight="28.0" prefWidth="331.0">
+                              <Label layoutX="10.0" layoutY="205.0" prefHeight="28.0" prefWidth="80.0" text="Salary:">
+                                 <font>
+                                    <Font name="Courier Bold" size="13.0" />
+                                 </font></Label>
+                              <Label fx:id="teacherSalaryLabel" layoutX="25.0" layoutY="301.0" prefHeight="28.0" prefWidth="331.0">
                                  <VBox.margin>
                                     <Insets left="20.0" />
                                  </VBox.margin>
                               </Label>
-                              <Label layoutX="10.0" layoutY="325.0" prefHeight="40.0" prefWidth="80.0" text="Degree:" />
-                              <Label layoutX="25.0" layoutY="369.0" prefHeight="28.0" prefWidth="331.0">
+                              <Label layoutX="10.0" layoutY="325.0" prefHeight="28.0" prefWidth="80.0" text="Degree:">
+                                 <font>
+                                    <Font name="Courier Bold" size="13.0" />
+                                 </font></Label>
+                              <Label fx:id="teacherDegreeLabel" layoutX="25.0" layoutY="369.0" prefHeight="28.0" prefWidth="331.0">
                                  <VBox.margin>
                                     <Insets left="20.0" />
                                  </VBox.margin>
                               </Label>
-                              <Label layoutX="10.0" layoutY="245.0" prefHeight="40.0" prefWidth="119.0" text="Subject:" />
-                              <Label layoutX="25.0" layoutY="437.0" prefHeight="28.0" prefWidth="331.0">
+                              <Label layoutX="10.0" layoutY="245.0" prefHeight="28.0" prefWidth="119.0" text="Subject:">
+                                 <font>
+                                    <Font name="Courier Bold" size="13.0" />
+                                 </font></Label>
+                              <Label fx:id="teacherSubjectLabel" layoutX="25.0" layoutY="437.0" prefHeight="28.0" prefWidth="331.0">
                                  <VBox.margin>
                                     <Insets left="20.0" />
                                  </VBox.margin>
                               </Label>
-                              <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="333.0" text="Load Other Teachers" />
+                              <Label />
+                              <TextField fx:id="teacherChangePasswordField" promptText="Set New Password" />
+                              <Button mnemonicParsing="false" onAction="#changePassword" prefHeight="27.0" prefWidth="343.0" text="Change Password" />
+                              <Label prefHeight="25.0" prefWidth="326.0" />
+                              <Button mnemonicParsing="false" onAction="#loadOtherTeachers" prefHeight="27.0" prefWidth="333.0" text="Load Other Teachers" />
                            </children>
                            <padding>
                               <Insets left="15.0" right="15.0" />
@@ -94,17 +117,17 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <HBox layoutY="66.0" prefHeight="623.0" prefWidth="1281.0">
+                        <HBox layoutY="108.0" prefHeight="592.0" prefWidth="1281.0">
                            <children>
-                              <TableView fx:id="studenttable1" prefHeight="632.0" prefWidth="1281.0">
+                              <TableView fx:id="studentTable" prefHeight="632.0" prefWidth="1281.0">
                                  <columns>
-                                    <TableColumn fx:id="firstnamecolumn1" prefWidth="235.76192075014114" text="First Name" />
-                                    <TableColumn fx:id="lastnamecolumn1" prefWidth="200.23812866210938" text="Last Name" />
-                                    <TableColumn fx:id="departmentcolumn1" prefWidth="215.50320434570312" text="Email" />
-                                    <TableColumn fx:id="termcolumn1" prefWidth="194.6708984375" text="Department" />
-                                    <TableColumn fx:id="dateofbirthcolumn" prefWidth="110.2247314453125" text="Term" />
-                                    <TableColumn fx:id="acperformancecolumn1" prefWidth="136.92291259765625" text="Date Of Birth" />
-                                    <TableColumn fx:id="acperformancecolumn11" prefWidth="187.0770263671875" text="Ac. performance" />
+                                    <TableColumn fx:id="studentFNameColumn" prefWidth="235.76192075014114" text="First Name" />
+                                    <TableColumn fx:id="studentLNameColumn" prefWidth="200.23812866210938" text="Last Name" />
+                                    <TableColumn fx:id="studentEmailColumn" prefWidth="215.50320434570312" text="Email" />
+                                    <TableColumn fx:id="studentDepartmentColumn" prefWidth="194.6708984375" text="Department" />
+                                    <TableColumn fx:id="studentTermColumn" prefWidth="110.2247314453125" text="Term" />
+                                    <TableColumn fx:id="studentDOBColumn" prefWidth="136.92291259765625" text="Date Of Birth" />
+                                    <TableColumn fx:id="studentAcPerformColumn" prefWidth="187.0770263671875" text="Ac. performance" />
                                  </columns>
                               </TableView>
                            </children>
@@ -117,6 +140,7 @@
                               <Insets left="120.0" />
                            </padding>
                         </Label>
+                        <Button layoutX="471.0" layoutY="48.0" mnemonicParsing="false" onAction="#loadStudents" prefHeight="27.0" prefWidth="321.0" text="Load Students" />
                      </children>
                   </AnchorPane>
             </content>
@@ -125,14 +149,14 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <HBox layoutY="66.0" prefHeight="623.0" prefWidth="1281.0">
+                        <HBox layoutY="123.0" prefHeight="566.0" prefWidth="1281.0">
                            <children>
-                              <TableView fx:id="studenttable11" prefHeight="632.0" prefWidth="1281.0">
+                              <TableView fx:id="adStaffTable" prefHeight="632.0" prefWidth="1281.0">
                                  <columns>
-                                    <TableColumn fx:id="firstnamecolumn11" prefWidth="278.8069957494736" text="First Name" />
-                                    <TableColumn fx:id="lastnamecolumn11" prefWidth="267.6930389404297" text="Last Name" />
-                                    <TableColumn fx:id="departmentcolumn11" prefWidth="423.8072204589844" text="Email" />
-                                    <TableColumn fx:id="termcolumn11" prefWidth="310.46112060546875" text="Department" />
+                                    <TableColumn fx:id="adStaffFirstNameColumn" prefWidth="278.8069957494736" text="First Name" />
+                                    <TableColumn fx:id="adStaffLastNameColumn" prefWidth="267.6930389404297" text="Last Name" />
+                                    <TableColumn fx:id="adStaffEmailColumn" prefWidth="423.8072204589844" text="Email" />
+                                    <TableColumn fx:id="adStaffDepartmentColumn" prefWidth="310.46112060546875" text="Department" />
                                  </columns>
                               </TableView>
                            </children>
@@ -145,6 +169,7 @@
                               <Insets left="40.0" />
                            </padding>
                         </Label>
+                        <Button layoutX="451.0" layoutY="48.0" mnemonicParsing="false" onAction="#loadAdministrativeStaff" prefHeight="27.0" prefWidth="353.0" text="Load Administrative Staff" />
                      </children>
                   </AnchorPane>
                </content>

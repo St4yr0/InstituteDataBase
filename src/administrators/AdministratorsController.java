@@ -216,7 +216,8 @@ public class AdministratorsController implements Initializable {
             preparedStatementForStud.setString(7, this.payingcompany.getText());
             preparedStatementForStud.setString(8, this.acperformance.getText());
 
-            preparedStatementForLog.setString(1, this.firstname.getText());
+            preparedStatementForLog.setString(1, this.firstname.getText() + '_' +
+                    this.lastname.getText());
             preparedStatementForLog.setString(2, this.lastname.getText());
             preparedStatementForLog.setString(3, "Student");
 
@@ -235,7 +236,7 @@ public class AdministratorsController implements Initializable {
     private void deleteStudent(ActionEvent event) {
         try {
             String sql = "DELETE FROM Students WHERE FIRST_NAME = ? AND LAST_NAME = ?";
-            String sql_log = "DELETE FROM login WHERE username = ? AND password = ?";
+            String sql_log = "DELETE FROM login WHERE username = ?";
             Connection con = dbConnection.getConnection();
             PreparedStatement preparedStatementForStud = con.prepareStatement(sql);
             PreparedStatement preparedStatementForLog = con.prepareStatement(sql_log);
@@ -244,8 +245,8 @@ public class AdministratorsController implements Initializable {
             preparedStatementForStud.setString(1, this.firstNameToDelete.getText());
             preparedStatementForStud.setString(2, this.lastNameToDelete.getText());
 
-            preparedStatementForLog.setString(1, this.firstNameToDelete.getText());
-            preparedStatementForLog.setString(2, this.lastNameToDelete.getText());
+            preparedStatementForLog.setString(1, this.firstNameToDelete.getText() + '_' +
+                    this.lastNameToDelete.getText());
 
             preparedStatementForStud.execute();
             preparedStatementForLog.execute();
@@ -319,8 +320,9 @@ public class AdministratorsController implements Initializable {
             preparedStatement.setString(5, this.teacherDegree.getText());
             preparedStatement.setString(6, this.teacherSubject.getText());
 
-            preparedStatementForLog.setString(1, this.firstname.getText());
-            preparedStatementForLog.setString(2, this.lastname.getText());
+            preparedStatementForLog.setString(1, this.teacherFirstName.getText() + '_' +
+                    this.teacherLastName.getText());
+            preparedStatementForLog.setString(2, this.teacherLastName.getText());
             preparedStatementForLog.setString(3, "Teacher");
 
             preparedStatement.execute();
@@ -338,7 +340,7 @@ public class AdministratorsController implements Initializable {
     private void deleteTeacher(ActionEvent event) {
         try {
             String sql = "DELETE FROM Teachers WHERE FIRST_NAME = ? AND LAST_NAME = ?";
-            String sql_log = "DELETE FROM login WHERE username = ? AND password = ?";
+            String sql_log = "DELETE FROM login WHERE username = ?";
             Connection con = dbConnection.getConnection();
             PreparedStatement preparedStatementForTeach = con.prepareStatement(sql);
             PreparedStatement preparedStatementForLog = con.prepareStatement(sql_log);
@@ -347,8 +349,8 @@ public class AdministratorsController implements Initializable {
             preparedStatementForTeach.setString(1, this.getTeacherFirstNameToDelete.getText());
             preparedStatementForTeach.setString(2, this.getTeacherLastNameToDelete.getText());
 
-            preparedStatementForLog.setString(1, this.getTeacherFirstNameToDelete.getText());
-            preparedStatementForLog.setString(2, this.getTeacherLastNameToDelete.getText());
+            preparedStatementForLog.setString(1, this.getTeacherFirstNameToDelete.getText() + '_' +
+                    this.getTeacherLastNameToDelete.getText());
 
             preparedStatementForTeach.execute();
             preparedStatementForLog.execute();
@@ -391,7 +393,7 @@ public class AdministratorsController implements Initializable {
             System.err.println("Error " + ex);
         }
 
-        this.adstaffFNameColumn.setCellValueFactory(      new PropertyValueFactory<>("FIRST_NAME"));
+        this.adstaffFNameColumn.setCellValueFactory(new PropertyValueFactory<>("FIRST_NAME"));
         this.adstaffLNameColumn.setCellValueFactory(      new PropertyValueFactory<>("LAST_NAME"));
         this.adstaffEmailColumn.setCellValueFactory(      new PropertyValueFactory<>("EMAIL"));
         this.adstaffSalaryColumn.setCellValueFactory(     new PropertyValueFactory<>("SALARY"));
@@ -431,8 +433,6 @@ public class AdministratorsController implements Initializable {
             String sql = "DELETE FROM Administrative_staff WHERE FIRST_NAME = ? AND LAST_NAME = ?";
             Connection con = dbConnection.getConnection();
             PreparedStatement preparedStatement = con.prepareStatement(sql);
-
-
 
             preparedStatement.setString(1, this.adStaffFnameToDelete.getText());
             preparedStatement.setString(2, this.adStaffLnameToDelete.getText());

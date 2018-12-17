@@ -1,6 +1,5 @@
 package login;
 
-import administrators.AdministratorsController;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import administrators.AdministratorsController;
 import students.StudentsController;
 import teachers.TeachersController;
 
@@ -81,6 +81,7 @@ public class LoginController implements Initializable {
             studentStage.setScene(scene);
             studentStage.setTitle("Student Dashboard");
             studentStage.setResizable(false);
+            studentsController.setStudentsData(login.getText());
             studentStage.show();
         }
         catch (IOException ex) {
@@ -101,6 +102,7 @@ public class LoginController implements Initializable {
             teacherStage.setScene(scene);
             teacherStage.setTitle("Teacher Dashboard");
             teacherStage.setResizable(false);
+            teachersController.setTeachersData(login.getText());
             teacherStage.show();
         }
         catch (IOException ex) {
