@@ -3,15 +3,22 @@ package administrators;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import dbUtil.dbConnection;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import students.StudentsData;
 import teachers.TeachersData;
+import login.LoginController;
 
 import javafx.event.ActionEvent;
+
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -41,7 +48,8 @@ public class AdministratorsController implements Initializable {
     private TextField firstNameToDelete;
     @FXML
     private TextField lastNameToDelete;
-
+    @FXML
+    private Button logoutButton;
 
     @FXML
     private TableView<StudentsData> studenttable;
@@ -531,6 +539,29 @@ public class AdministratorsController implements Initializable {
         this.partnerContNumber.setText("");
         this.partnerContPerson.setText("");
         this.partnerRequisite.setText("");
+    }
+
+    @FXML
+    private void logout(ActionEvent event) {
+        try {
+            Stage stage = (Stage)this.logoutButton.getScene().getWindow();
+            stage.close();
+
+            Stage loginStage = new Stage();
+            FXMLLoader loader = new FXMLLoader();
+            Pane loginRoot = loader.load(getClass().getResource(
+                    "/login/login.fxml").openStream());
+            LoginController loginController = (LoginController)loader.getController();
+            Scene scene = new Scene(loginRoot);
+            loginStage.setScene(scene);
+            loginStage.setTitle("Institute Managing System");
+            loginStage.setResizable(false);
+            loginStage.show();
+
+        }
+        catch(IOException ex) {
+            System.err.println("Error " + ex);
+        }
     }
 
 }

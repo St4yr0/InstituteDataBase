@@ -4,15 +4,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
 import dbUtil.dbConnection;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.cell.PropertyValueFactory;
 
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import login.LoginController;
+
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,7 +24,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
-//  сделать добавление пароля
 public class StudentsController implements Initializable {
 
     @FXML
@@ -41,6 +44,8 @@ public class StudentsController implements Initializable {
     private Label studentAcPerformanceLabel;
     @FXML
     private TextField studentChangePasswrodFireld;
+    @FXML
+    private Button logoutButton;
 
     @FXML
     private TableView<StudentsData> studenttable;
@@ -144,6 +149,29 @@ public class StudentsController implements Initializable {
              this.studentAcPerformanceLabel.setText(resultSet.getString(8));
         }
         catch(SQLException ex) {
+            System.err.println("Error " + ex);
+        }
+    }
+
+    @FXML
+    public void logout(ActionEvent event) {
+        try {
+            Stage stage = (Stage)this.logoutButton.getScene().getWindow();
+            stage.close();
+
+            Stage loginStage = new Stage();
+            FXMLLoader loader = new FXMLLoader();
+            Pane loginRoot = loader.load(getClass().getResource(
+                    "/login/login.fxml").openStream());
+            LoginController loginController = (LoginController)loader.getController();
+            Scene scene = new Scene(loginRoot);
+            loginStage.setScene(scene);
+            loginStage.setTitle("Institute Managing System");
+            loginStage.setResizable(false);
+            loginStage.show();
+
+        }
+        catch(IOException ex) {
             System.err.println("Error " + ex);
         }
     }

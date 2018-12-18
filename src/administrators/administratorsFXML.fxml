@@ -28,9 +28,9 @@
                                   <TableColumn fx:id="firstnamecolumn" prefWidth="126.80514526367188" text="First Name" />
                                   <TableColumn fx:id="lastnamecolumn" prefWidth="120.69476318359375" text="Last Name" />
                                     <TableColumn fx:id="emailcolumn" prefWidth="142.08990478515625" text="Email" />
-                                    <TableColumn fx:id="departmentcolumn" prefWidth="111.4332275390625" text="Department" />
+                                    <TableColumn fx:id="departmentcolumn" prefWidth="111.4332275390625" text="Date Of Birth" />
                                     <TableColumn fx:id="termcolumn" prefWidth="51.7493896484375" text="Term" />
-                                    <TableColumn fx:id="dateofbirthcolumn" prefWidth="109.99456787109375" text="Date Of Birth" />
+                                    <TableColumn fx:id="dateofbirthcolumn" prefWidth="109.99456787109375" text="Department" />
                                     <TableColumn fx:id="payingcompanycolumn" prefWidth="131.5762939453125" text="Paying Company" />
                                     <TableColumn fx:id="acperformancecolumn" prefWidth="164.20306396484375" text="Ac. performance" />
                                 </columns>
@@ -97,6 +97,8 @@
                               <Button fx:id="deleteStudent" mnemonicParsing="false" onAction="#deleteStudent" prefHeight="27.0" prefWidth="375.0" text="Delete Student" />
                               <Label prefHeight="39.0" prefWidth="296.0" />
                               <Button fx:id="loadDataButton" mnemonicParsing="false" onAction="#loadStudentData" prefHeight="27.0" prefWidth="322.0" text="Load Data" />
+                              <Label prefHeight="147.0" prefWidth="34.0" />
+                              <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logout" prefHeight="27.0" prefWidth="92.0" text="Logout" />
                            </children>
                            <padding>
                               <Insets left="15.0" right="15.0" />

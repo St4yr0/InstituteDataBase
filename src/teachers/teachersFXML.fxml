@@ -104,6 +104,8 @@
                               <Button mnemonicParsing="false" onAction="#changePassword" prefHeight="27.0" prefWidth="343.0" text="Change Password" />
                               <Label prefHeight="25.0" prefWidth="326.0" />
                               <Button mnemonicParsing="false" onAction="#loadOtherTeachers" prefHeight="27.0" prefWidth="333.0" text="Load Other Teachers" />
+                              <Label prefHeight="80.0" prefWidth="34.0" />
+                              <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logout" prefHeight="27.0" prefWidth="92.0" text="Logout" />
                            </children>
                            <padding>
                               <Insets left="15.0" right="15.0" />
