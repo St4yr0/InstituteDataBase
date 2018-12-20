@@ -1,5 +1,6 @@
 package teachers;
 
+import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import login.LoginController;
 import students.StudentsData;
 
@@ -126,15 +128,27 @@ public class TeachersController implements Initializable {
     @FXML
     private void changePassword(ActionEvent event) {
         try {
-            String sql = "UPDATE login SET password = ? WHERE username = ?";
-            Connection con = dbConnection.getConnection();
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            if (!this.teacherChangePasswordField.getText().equals("")) {
+                String sql = "UPDATE login SET password = ? WHERE username = ?";
+                Connection con = dbConnection.getConnection();
+                PreparedStatement preparedStatement = con.prepareStatement(sql);
 
-            preparedStatement.setString(1, this.teacherChangePasswordField.getText());
-            preparedStatement.setString(2, this.teacherFirstNameLabel.getText() + '_' + this.teacherLastNameLabel.getText());
+                preparedStatement.setString(1, this.teacherChangePasswordField.getText());
+                preparedStatement.setString(2, this.teacherFirstNameLabel.getText() + '_' + this.teacherLastNameLabel.getText());
 
-            preparedStatement.execute();
-            this.teacherChangePasswordField.setText("");
+                preparedStatement.execute();
+                this.teacherChangePasswordField.setText("");
+            } else {
+                TranslateTransition translateTransition = new TranslateTransition(Duration.millis(70),
+                        this.teacherChangePasswordField);
+                translateTransition.setFromX(0f);
+                translateTransition.setFromY(0f);
+                translateTransition.setByX(10f);
+                translateTransition.setByY(11f);
+                translateTransition.setCycleCount(3);
+                translateTransition.setAutoReverse(true);
+                translateTransition.play();
+            }
         }
         catch(SQLException ex) {
             System.err.println("Error " + ex);

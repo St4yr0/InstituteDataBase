@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="administrators.AdministratorsController">
    <children>
@@ -86,18 +87,9 @@
                               </TextField>
                               <Button fx:id="addStudentsButton" mnemonicParsing="false" onAction="#addStudent" prefHeight="27.0" prefWidth="298.0" text="Add Student" />
                               <Button fx:id="clearFieldsButton" mnemonicParsing="false" onAction="#clearFields" prefHeight="27.0" prefWidth="394.0" text="Clear Fields" />
-                              <Label prefHeight="17.0" prefWidth="363.0" />
-                              <Label prefHeight="25.0" prefWidth="296.0" text="Delete Student">
-                                 <padding>
-                                    <Insets left="50.0" />
-                                 </padding>
-                              </Label>
-                              <TextField fx:id="firstNameToDelete" promptText="First Name" />
-                              <TextField fx:id="lastNameToDelete" promptText="Last Name" />
-                              <Button fx:id="deleteStudent" mnemonicParsing="false" onAction="#deleteStudent" prefHeight="27.0" prefWidth="375.0" text="Delete Student" />
-                              <Label prefHeight="39.0" prefWidth="296.0" />
+                              <Label prefHeight="28.0" prefWidth="34.0" />
                               <Button fx:id="loadDataButton" mnemonicParsing="false" onAction="#loadStudentData" prefHeight="27.0" prefWidth="322.0" text="Load Data" />
-                              <Label prefHeight="147.0" prefWidth="34.0" />
+                              <Label prefHeight="286.0" prefWidth="34.0" />
                               <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logout" prefHeight="27.0" prefWidth="92.0" text="Logout" />
                            </children>
                            <padding>
@@ -141,17 +133,11 @@
                               <TextField fx:id="teacherSubject" layoutX="25.0" layoutY="149.0" promptText="Subject" />
                               <Button fx:id="addTeacherButton" mnemonicParsing="false" onAction="#addTeacher" prefHeight="27.0" prefWidth="455.0" text="Add Teacher" />
                               <Button fx:id="clearTeacherFieldsButton" mnemonicParsing="false" onAction="#clearTeacherFields" prefHeight="27.0" prefWidth="486.0" text="Clear Fields" />
-                              <Label prefHeight="28.0" prefWidth="385.0" />
-                              <Label prefHeight="25.0" prefWidth="296.0" text="Delete Teacher">
-                                 <padding>
-                                    <Insets left="50.0" />
-                                 </padding>
-                              </Label>
-                              <TextField fx:id="getTeacherFirstNameToDelete" promptText="First Name" />
-                              <TextField fx:id="getTeacherLastNameToDelete" promptText="Last Name" />
-                              <Button fx:id="deleteTeacher" mnemonicParsing="false" onAction="#deleteTeacher" prefHeight="27.0" prefWidth="420.0" text="Delete Teacher" />
-                              <Label prefHeight="32.0" prefWidth="385.0" />
+                              <Label prefHeight="48.0" prefWidth="385.0" />
+                              <Label />
                               <Button fx:id="loadTeacherButton" mnemonicParsing="false" onAction="#loadTeacherData" prefHeight="0.0" prefWidth="421.0" text="Load Data" />
+                              <Label prefHeight="306.0" prefWidth="34.0" />
+                              <Button fx:id="logoutButton1" mnemonicParsing="false" onAction="#logout" prefHeight="27.0" prefWidth="92.0" text="Logout" />
                            </children>
                            <padding>
                               <Insets left="15.0" right="15.0" />
@@ -177,19 +163,14 @@
                               <TextField fx:id="adstaffEmail" layoutX="25.0" layoutY="68.0" promptText="Email" />
                               <TextField fx:id="adstaffSalary" layoutX="25.0" layoutY="95.0" promptText="Salary" />
                               <TextField fx:id="adstaffDepartment" layoutX="25.0" layoutY="122.0" promptText="Department" />
-                              <Button fx:id="addAdStaffButton" mnemonicParsing="false" onAction="#addAdStaff" prefHeight="27.0" prefWidth="455.0" text="Add Manager" />
+                              <Button fx:id="addAdStaffButton" mnemonicParsing="false" onAction="#addAdStaff" prefHeight="27.0" prefWidth="455.0" text="Add Administrative Officer" />
                               <Button fx:id="clearAdStaffButton" mnemonicParsing="false" onAction="#clearAdStaffFields" prefHeight="27.0" prefWidth="486.0" text="Clear Fields" />
-                              <Label prefHeight="37.0" prefWidth="34.0" />
-                              <Label prefHeight="25.0" prefWidth="296.0" text="Delete Manager">
-                                 <padding>
-                                    <Insets left="50.0" />
-                                 </padding>
-                              </Label>
-                              <TextField fx:id="adStaffFnameToDelete" promptText="First Name" />
-                              <TextField fx:id="adStaffLnameToDelete" promptText="Last Name" />
-                              <Button fx:id="deleteManager" mnemonicParsing="false" onAction="#deleteManager" prefHeight="27.0" prefWidth="420.0" text="Delete Manager" />
-                              <Label prefHeight="31.0" prefWidth="34.0" />
+                              <Label prefHeight="48.0" prefWidth="34.0" />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" />
+                              <Label />
                               <Button fx:id="loadAdStaffButton" mnemonicParsing="false" onAction="#loadAdStaffData" prefHeight="0.0" prefWidth="421.0" text="Load Data" />
+                              <Label prefHeight="316.0" prefWidth="34.0" />
+                              <Button fx:id="logoutButton2" mnemonicParsing="false" onAction="#logout" prefHeight="27.0" prefWidth="92.0" text="Logout" />
                            </children>
                            <padding>
                               <Insets left="15.0" right="15.0" />
@@ -239,16 +220,11 @@
                               <TextField fx:id="partnerContNumber" layoutX="25.0" layoutY="99.0" promptText="Contact Number" />
                               <Button fx:id="addPartnerButton" mnemonicParsing="false" onAction="#addPartner" prefHeight="27.0" prefWidth="427.0" text="Add Company" />
                               <Button fx:id="clearPartnerFields" mnemonicParsing="false" onAction="#clearPartnerFields" prefHeight="27.0" prefWidth="438.0" text="Clear Fields" />
-                              <Label prefHeight="37.0" prefWidth="34.0" />
-                              <Label prefHeight="25.0" prefWidth="296.0" text="Delete Partner">
-                                 <padding>
-                                    <Insets left="50.0" />
-                                 </padding>
-                              </Label>
-                              <TextField fx:id="partnerAppellativeToDelete" promptText="Appellative" />
-                              <Button fx:id="deletePartner" mnemonicParsing="false" onAction="#deletePartner" prefHeight="27.0" prefWidth="420.0" text="Delete Partner" />
-                              <Label prefHeight="39.0" prefWidth="34.0" />
+                              <Label />
+                              <Label prefHeight="71.0" prefWidth="34.0" />
                               <Button fx:id="loadPartnerData" mnemonicParsing="false" onAction="#loadPartnerData" prefHeight="27.0" prefWidth="435.0" text="Load Data" />
+                              <Label prefHeight="328.0" prefWidth="51.0" />
+                              <Button fx:id="logoutButton3" mnemonicParsing="false" onAction="#logout" prefHeight="27.0" prefWidth="92.0" text="Logout" />
                            </children>
                         </VBox>
                      </children></AnchorPane>

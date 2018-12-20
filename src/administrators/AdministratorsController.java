@@ -1,15 +1,23 @@
 package administrators;
 
+import administrators.editAdministrativeStaff.EditorAdStaffController;
+import administrators.editPartnerCompany.EditorPartnerCompanyController;
+import administrators.editTeacher.EditorTeacherController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import administrators.editStudent.EditorStudentController;
+
 import dbUtil.dbConnection;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import students.StudentsData;
@@ -45,11 +53,9 @@ public class AdministratorsController implements Initializable {
     @FXML
     private TextField acperformance;
     @FXML
-    private TextField firstNameToDelete;
-    @FXML
-    private TextField lastNameToDelete;
-    @FXML
     private Button logoutButton;
+
+
 
     @FXML
     private TableView<StudentsData> studenttable;
@@ -84,10 +90,6 @@ public class AdministratorsController implements Initializable {
     private TextField teacherDegree;
     @FXML
     private TextField teacherSubject;
-    @FXML
-    private TextField getTeacherFirstNameToDelete;
-    @FXML
-    private TextField getTeacherLastNameToDelete;
 
     @FXML
     private TableView<TeachersData> teacherTable;
@@ -116,10 +118,6 @@ public class AdministratorsController implements Initializable {
     private TextField adstaffSalary;
     @FXML
     private TextField adstaffDepartment;
-    @FXML
-    private TextField adStaffFnameToDelete;
-    @FXML
-    private TextField adStaffLnameToDelete;
 
     @FXML
     private TableView<AdministrativeStaffData> adstaffTable;
@@ -144,8 +142,6 @@ public class AdministratorsController implements Initializable {
     private TextField partnerContPerson;
     @FXML
     private TextField partnerContNumber;
-    @FXML
-    private TextField partnerAppellativeToDelete;
 
     @FXML
     private TableView<PartnerCompaniesData> partnerTable;
@@ -170,6 +166,115 @@ public class AdministratorsController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.db_connection = new dbConnection();
 
+        studenttable.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/administrators/editStudent/editorStudentFXML.fxml"));
+
+                try {
+                    loader.load();
+                }
+                catch(IOException ex) {
+                    System.err.println("Error " + ex);
+                }
+
+                EditorStudentController editorStudentController = loader.getController();
+                editorStudentController.setStudentData(studenttable.getSelectionModel().getSelectedItem().getFIRST_NAME(),
+                        studenttable.getSelectionModel().getSelectedItem().getLAST_NAME(),
+                        studenttable.getSelectionModel().getSelectedItem().getEMAIL(),
+                        studenttable.getSelectionModel().getSelectedItem().getDEPARTMENT(),
+                        studenttable.getSelectionModel().getSelectedItem().getTERM(),
+                        studenttable.getSelectionModel().getSelectedItem().getDATE_OF_BIRTH(),
+                        studenttable.getSelectionModel().getSelectedItem().getPAYING_COMPANY(),
+                        studenttable.getSelectionModel().getSelectedItem().getAC_PERFORMANCE());
+                Parent root = loader.getRoot();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.show();
+
+            }
+        });
+
+        partnerTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/administrators/editPartnerCompany/editorPartnerCompanyFXML.fxml"));
+
+                try {
+                    loader.load();
+                }
+                catch(IOException ex) {
+                    System.err.println("Error " + ex);
+                }
+
+                EditorPartnerCompanyController editorPartnerCompanyController = loader.getController();
+                editorPartnerCompanyController.setPartnerData(partnerTable.getSelectionModel().getSelectedItem().getAPPELLATIVE(),
+                        partnerTable.getSelectionModel().getSelectedItem().getREQUISITE(),
+                        partnerTable.getSelectionModel().getSelectedItem().getCONTACT_PERSON(),
+                        partnerTable.getSelectionModel().getSelectedItem().getCONTACT_NUMBER());
+                Parent root = loader.getRoot();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.show();
+            }
+        });
+
+        teacherTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/administrators/editTeacher/editorTeacherFXML.fxml"));
+
+                try {
+                    loader.load();
+                }
+                catch(IOException ex) {
+                    System.err.println("Error " + ex);
+                }
+
+                EditorTeacherController editorTeacherController = loader.getController();
+                editorTeacherController.setTeacherData(teacherTable.getSelectionModel().getSelectedItem().getFIRST_NAME(),
+                        teacherTable.getSelectionModel().getSelectedItem().getLAST_NAME(),
+                        teacherTable.getSelectionModel().getSelectedItem().getEMAIL(),
+                        teacherTable.getSelectionModel().getSelectedItem().getSALARY(),
+                        teacherTable.getSelectionModel().getSelectedItem().getDEGREE(),
+                        teacherTable.getSelectionModel().getSelectedItem().getSUBJECT());
+                Parent root = loader.getRoot();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.show();
+            }
+        });
+
+        adstaffTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("/administrators/editAdministrativeStaff/editorAdStaffFXML.fxml"));
+
+                try {
+                    loader.load();
+                }
+                catch(IOException ex) {
+                    System.err.println("Error " + ex);
+                }
+
+                EditorAdStaffController editorAdStaffController = loader.getController();
+                editorAdStaffController.setAdStaffData(adstaffTable.getSelectionModel().getSelectedItem().getFIRST_NAME(),
+                        adstaffTable.getSelectionModel().getSelectedItem().getLAST_NAME(),
+                        adstaffTable.getSelectionModel().getSelectedItem().getEMAIL(),
+                        adstaffTable.getSelectionModel().getSelectedItem().getSALARY(),
+                        adstaffTable.getSelectionModel().getSelectedItem().getDEPARTMENT());
+                Parent root = loader.getRoot();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.show();
+
+            }
+        });
+
     }
 
     @FXML
@@ -192,7 +297,7 @@ public class AdministratorsController implements Initializable {
             System.err.println("Error " + ex);
         }
 
-        this.firstnamecolumn.setCellValueFactory(    new PropertyValueFactory<>("FIRST_NAME"));
+        this.firstnamecolumn.setCellValueFactory(new PropertyValueFactory<>("FIRST_NAME"));
         this.lastnamecolumn.setCellValueFactory(     new PropertyValueFactory<>("LAST_NAME"));
         this.emailcolumn.setCellValueFactory(        new PropertyValueFactory<>("EMAIL"));
         this.dateofbirthcolumn.setCellValueFactory(  new PropertyValueFactory<>("DATE_OF_BIRTH"));
@@ -208,60 +313,40 @@ public class AdministratorsController implements Initializable {
     @FXML
     private void addStudent(ActionEvent event) {
         try {
-            String sql_stud = "INSERT INTO Students(First_Name, Last_Name, Email, Date_Of_Birth, " +
-                    "Department, term, Paying_Company, Ac_performance) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-            String sql_log = "INSERT INTO login(username, password, division) VALUES (?, ?, ?)";
-            Connection con = dbConnection.getConnection();
-            PreparedStatement preparedStatementForStud = con.prepareStatement(sql_stud);
-            PreparedStatement preparedStatementForLog = con.prepareStatement(sql_log);
+            if (!this.firstname.getText().equals("") && !this.lastname.getText().equals("") &&
+                    !this.email.getText().equals("") && !this.dateofbirth.getEditor().getText().equals("") &&
+            !this.department.getText().equals("") && !this.term.getText().equals("") &&
+                    !this.payingcompany.getText().equals("") && !this.acperformance.getText().equals("")) {
 
-            preparedStatementForStud.setString(1, this.firstname.getText());
-            preparedStatementForStud.setString(2, this.lastname.getText());
-            preparedStatementForStud.setString(3, this.email.getText());
-            preparedStatementForStud.setString(4, this.dateofbirth.getEditor().getText());
-            preparedStatementForStud.setString(5, this.department.getText());
-            preparedStatementForStud.setString(6, this.term.getText());
-            preparedStatementForStud.setString(7, this.payingcompany.getText());
-            preparedStatementForStud.setString(8, this.acperformance.getText());
+                String sql_stud = "INSERT INTO Students(First_Name, Last_Name, Email, Date_Of_Birth, " +
+                        "Department, Term, Paying_Company, Ac_performance) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                String sql_log = "INSERT INTO login(username, password, division) VALUES (?, ?, ?)";
+                Connection con = dbConnection.getConnection();
+                PreparedStatement preparedStatementForStud = con.prepareStatement(sql_stud);
+                PreparedStatement preparedStatementForLog = con.prepareStatement(sql_log);
 
-            preparedStatementForLog.setString(1, this.firstname.getText() + '_' +
-                    this.lastname.getText());
-            preparedStatementForLog.setString(2, this.lastname.getText());
-            preparedStatementForLog.setString(3, "Student");
+                preparedStatementForStud.setString(1, this.firstname.getText());
+                preparedStatementForStud.setString(2, this.lastname.getText());
+                preparedStatementForStud.setString(3, this.email.getText());
+                preparedStatementForStud.setString(4, this.dateofbirth.getEditor().getText());
+                preparedStatementForStud.setString(5, this.department.getText());
+                preparedStatementForStud.setString(6, this.term.getText());
+                preparedStatementForStud.setString(7, this.payingcompany.getText());
+                preparedStatementForStud.setString(8, this.acperformance.getText());
 
-            preparedStatementForStud.execute();
-            preparedStatementForLog.execute();
-            loadStudentData(event);
-            clearFields(event);
-            con.close();
-        }
-        catch (SQLException ex) {
-            System.err.println("Error " + ex);
-        }
-    }
+                preparedStatementForLog.setString(1, this.firstname.getText() + '_' +
+                        this.lastname.getText());
+                preparedStatementForLog.setString(2, this.lastname.getText());
+                preparedStatementForLog.setString(3, "Student");
 
-    @FXML
-    private void deleteStudent(ActionEvent event) {
-        try {
-            String sql = "DELETE FROM Students WHERE FIRST_NAME = ? AND LAST_NAME = ?";
-            String sql_log = "DELETE FROM login WHERE username = ?";
-            Connection con = dbConnection.getConnection();
-            PreparedStatement preparedStatementForStud = con.prepareStatement(sql);
-            PreparedStatement preparedStatementForLog = con.prepareStatement(sql_log);
-
-
-            preparedStatementForStud.setString(1, this.firstNameToDelete.getText());
-            preparedStatementForStud.setString(2, this.lastNameToDelete.getText());
-
-            preparedStatementForLog.setString(1, this.firstNameToDelete.getText() + '_' +
-                    this.lastNameToDelete.getText());
-
-            preparedStatementForStud.execute();
-            preparedStatementForLog.execute();
-            loadStudentData(event);
-            clearFields(event);
-            con.close();
-
+                preparedStatementForStud.execute();
+                preparedStatementForLog.execute();
+                loadStudentData(event);
+                clearFields(event);
+                con.close();
+            } else {
+                return;
+            }
         }
         catch (SQLException ex) {
             System.err.println("Error " + ex);
@@ -314,58 +399,37 @@ public class AdministratorsController implements Initializable {
     @FXML
     private void addTeacher(ActionEvent event) {
         try {
-            String sql = "INSERT INTO Teachers(First_Name, Last_Name, Email, Salary, " +
-                    "Degree, Subject) VALUES (?, ?, ?, ?, ?, ?)";
-            String sql_log = "INSERT INTO login(username, password, division) VALUES (?, ?, ?)";
-            Connection con = dbConnection.getConnection();
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-            PreparedStatement preparedStatementForLog = con.prepareStatement(sql_log);
+            if (!this.teacherFirstName.getText().equals("") && !this.teacherLastName.getText().equals("") &&
+            !this.teacherEmail.getText().equals("") && !this.teacherSalary.getText().equals("") &&
+            !this.teacherDegree.getText().equals("") && !this.teacherSubject.getText().equals("")) {
 
-            preparedStatement.setString(1, this.teacherFirstName.getText());
-            preparedStatement.setString(2, this.teacherLastName.getText());
-            preparedStatement.setString(3, this.teacherEmail.getText());
-            preparedStatement.setString(4, this.teacherSalary.getText());
-            preparedStatement.setString(5, this.teacherDegree.getText());
-            preparedStatement.setString(6, this.teacherSubject.getText());
+                String sql = "INSERT INTO Teachers(First_Name, Last_Name, Email, Salary, " +
+                        "Degree, Subject) VALUES (?, ?, ?, ?, ?, ?)";
+                String sql_log = "INSERT INTO login(username, password, division) VALUES (?, ?, ?)";
+                Connection con = dbConnection.getConnection();
+                PreparedStatement preparedStatement = con.prepareStatement(sql);
+                PreparedStatement preparedStatementForLog = con.prepareStatement(sql_log);
 
-            preparedStatementForLog.setString(1, this.teacherFirstName.getText() + '_' +
-                    this.teacherLastName.getText());
-            preparedStatementForLog.setString(2, this.teacherLastName.getText());
-            preparedStatementForLog.setString(3, "Teacher");
+                preparedStatement.setString(1, this.teacherFirstName.getText());
+                preparedStatement.setString(2, this.teacherLastName.getText());
+                preparedStatement.setString(3, this.teacherEmail.getText());
+                preparedStatement.setString(4, this.teacherSalary.getText());
+                preparedStatement.setString(5, this.teacherDegree.getText());
+                preparedStatement.setString(6, this.teacherSubject.getText());
 
-            preparedStatement.execute();
-            preparedStatementForLog.execute();
-            loadTeacherData(event);
-            clearTeacherFields(event);
-            con.close();
-        }
-        catch (SQLException ex) {
-            System.err.println("Error " + ex);
-        }
-    }
+                preparedStatementForLog.setString(1, this.teacherFirstName.getText() + '_' +
+                        this.teacherLastName.getText());
+                preparedStatementForLog.setString(2, this.teacherLastName.getText());
+                preparedStatementForLog.setString(3, "Teacher");
 
-    @FXML
-    private void deleteTeacher(ActionEvent event) {
-        try {
-            String sql = "DELETE FROM Teachers WHERE FIRST_NAME = ? AND LAST_NAME = ?";
-            String sql_log = "DELETE FROM login WHERE username = ?";
-            Connection con = dbConnection.getConnection();
-            PreparedStatement preparedStatementForTeach = con.prepareStatement(sql);
-            PreparedStatement preparedStatementForLog = con.prepareStatement(sql_log);
-
-
-            preparedStatementForTeach.setString(1, this.getTeacherFirstNameToDelete.getText());
-            preparedStatementForTeach.setString(2, this.getTeacherLastNameToDelete.getText());
-
-            preparedStatementForLog.setString(1, this.getTeacherFirstNameToDelete.getText() + '_' +
-                    this.getTeacherLastNameToDelete.getText());
-
-            preparedStatementForTeach.execute();
-            preparedStatementForLog.execute();
-            loadTeacherData(event);
-            clearTeacherFields(event);
-            con.close();
-
+                preparedStatement.execute();
+                preparedStatementForLog.execute();
+                loadTeacherData(event);
+                clearTeacherFields(event);
+                con.close();
+            } else {
+                return;
+            }
         }
         catch (SQLException ex) {
             System.err.println("Error " + ex);
@@ -414,46 +478,34 @@ public class AdministratorsController implements Initializable {
     @FXML
     private void addAdStaff(ActionEvent event) {
         try {
-            String sql = "INSERT INTO Administrative_staff(First_Name, Last_Name, Email, Salary, " +
-                    "Department) VALUES (?, ?, ?, ?, ?)";
-            Connection con = dbConnection.getConnection();
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            if (!this.adstaffFName.getText().equals("") && !this.adstaffLName.getText().equals("") &&
+                    !this.adstaffEmail.getText().equals("") && !this.adstaffSalary.getText().equals("") &&
+            !this.adstaffDepartment.getText().equals("")) {
 
-            preparedStatement.setString(1, this.adstaffFName.getText());
-            preparedStatement.setString(2, this.adstaffLName.getText());
-            preparedStatement.setString(3, this.adstaffEmail.getText());
-            preparedStatement.setString(4, this.adstaffSalary.getText());
-            preparedStatement.setString(5, this.adstaffDepartment.getText());
+                String sql = "INSERT INTO Administrative_staff(First_Name, Last_Name, Email, Salary, " +
+                        "Department) VALUES (?, ?, ?, ?, ?)";
+                Connection con = dbConnection.getConnection();
+                PreparedStatement preparedStatement = con.prepareStatement(sql);
 
-            preparedStatement.execute();
-            loadAdStaffData(event);
-            clearAdStaffFields(event);
-            con.close();
+                preparedStatement.setString(1, this.adstaffFName.getText());
+                preparedStatement.setString(2, this.adstaffLName.getText());
+                preparedStatement.setString(3, this.adstaffEmail.getText());
+                preparedStatement.setString(4, this.adstaffSalary.getText());
+                preparedStatement.setString(5, this.adstaffDepartment.getText());
+
+                preparedStatement.execute();
+                loadAdStaffData(event);
+                clearAdStaffFields(event);
+                con.close();
+            } else {
+                return;
+            }
         }
         catch (SQLException ex) {
             System.err.println("Error " + ex);
         }
     }
 
-    @FXML
-    private void deleteManager(ActionEvent event) {
-        try {
-            String sql = "DELETE FROM Administrative_staff WHERE FIRST_NAME = ? AND LAST_NAME = ?";
-            Connection con = dbConnection.getConnection();
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-
-            preparedStatement.setString(1, this.adStaffFnameToDelete.getText());
-            preparedStatement.setString(2, this.adStaffLnameToDelete.getText());
-
-            preparedStatement.execute();
-            loadAdStaffData(event);
-            clearAdStaffFields(event);
-            con.close();
-        }
-        catch (SQLException ex) {
-            System.err.println("Error " + ex);
-        }
-    }
 
     @FXML
     private void clearAdStaffFields(ActionEvent event) {
@@ -494,39 +546,25 @@ public class AdministratorsController implements Initializable {
     @FXML
     private void addPartner(ActionEvent event) {
         try {
-            String sql = "INSERT INTO Partner_Companies(Appellative, Requisite, Contact_Person, Contact_Number) " +
-                    "VALUES (?, ?, ?, ?)";
-            Connection con = dbConnection.getConnection();
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
+            if (!this.partnerApellative.getText().equals("") && !this.partnerRequisite.getText().equals("") &&
+            !this.partnerContPerson.getText().equals("") && !this.partnerContNumber.getText().equals("")) {
+                String sql = "INSERT INTO Partner_Companies(Appellative, Requisite, Contact_Person, Contact_Number) " +
+                        "VALUES (?, ?, ?, ?)";
+                Connection con = dbConnection.getConnection();
+                PreparedStatement preparedStatement = con.prepareStatement(sql);
 
-            preparedStatement.setString(1, this.partnerApellative.getText());
-            preparedStatement.setString(2, this.partnerRequisite.getText());
-            preparedStatement.setString(3, this.partnerContPerson.getText());
-            preparedStatement.setString(4, this.partnerContNumber.getText());
+                preparedStatement.setString(1, this.partnerApellative.getText());
+                preparedStatement.setString(2, this.partnerRequisite.getText());
+                preparedStatement.setString(3, this.partnerContPerson.getText());
+                preparedStatement.setString(4, this.partnerContNumber.getText());
 
-            preparedStatement.execute();
-            loadPartnerData(event);
-            clearPartnerFields(event);
-            con.close();
-        }
-        catch (SQLException ex) {
-            System.err.println("Error " + ex);
-        }
-    }
-
-    @FXML
-    private void deletePartner(ActionEvent event) {
-        try {
-            String sql = "DELETE FROM Partner_companies WHERE Appellative = ?";
-            Connection con = dbConnection.getConnection();
-            PreparedStatement preparedStatement = con.prepareStatement(sql);
-
-            preparedStatement.setString(1, this.partnerAppellativeToDelete.getText());
-
-            preparedStatement.execute();
-            loadPartnerData(event);
-            clearPartnerFields(event);
-            con.close();
+                preparedStatement.execute();
+                loadPartnerData(event);
+                clearPartnerFields(event);
+                con.close();
+            } else {
+                return;
+            }
         }
         catch (SQLException ex) {
             System.err.println("Error " + ex);
