@@ -1,6 +1,5 @@
 package students;
 
-import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,7 +14,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.util.Duration;
+
 import login.LoginController;
 
 import java.io.IOException;
@@ -45,7 +44,11 @@ public class StudentsController implements Initializable {
     @FXML
     private Label studentAcPerformanceLabel;
     @FXML
-    private TextField studentChangePasswrodFireld;
+    private Label passwordsDontMatchLabel;
+    @FXML
+    private PasswordField studentChangePasswrodFireld;
+    @FXML
+    private PasswordField repeateNewPassField;
     @FXML
     private Button logoutButton;
 
@@ -110,26 +113,31 @@ public class StudentsController implements Initializable {
     private void changePassword(ActionEvent event) {
         try {
             if (!this.studentChangePasswrodFireld.getText().equals("")) {
-                String sql = "UPDATE login SET password = ? WHERE username = ?";
-                Connection con = dbConnection.getConnection();
-                PreparedStatement preparedStatement = con.prepareStatement(sql);
+                if (this.repeateNewPassField.getText().equals(this.studentChangePasswrodFireld.getText())) {
+                    Connection con = null;
+                    String sql = "UPDATE login SET password = ? WHERE username = ?";
+                    if (con == null) {
+                        con = dbConnection.getConnection();
+                    }
+                    PreparedStatement preparedStatement = con.prepareStatement(sql);
 
-                preparedStatement.setString(1, this.studentChangePasswrodFireld.getText());
-                preparedStatement.setString(2, this.studentFirstNameLabel.getText() + '_' +
-                        this.studentLastNameLabel.getText());
+                    preparedStatement.setString(1, this.studentChangePasswrodFireld.getText());
+                    preparedStatement.setString(2, this.studentFirstNameLabel.getText() + '_' +
+                            this.studentLastNameLabel.getText());
 
-                preparedStatement.execute();
-                this.studentChangePasswrodFireld.setText("");
+                    preparedStatement.execute();
+                    this.studentChangePasswrodFireld.setText("");
+                    this.repeateNewPassField.setText("");
+                    this.passwordsDontMatchLabel.setText("Password was changed");
+                    preparedStatement.close();
+                } else {
+                    this.passwordsDontMatchLabel.setText("PASSWORDS DON'T MATCH");
+                    this.studentChangePasswrodFireld.setText("");
+                    this.repeateNewPassField.setText("");
+
+                }
             } else {
-                TranslateTransition translateTransition = new TranslateTransition(Duration.millis(70),
-                        this.studentChangePasswrodFireld);
-                translateTransition.setFromX(0f);
-                translateTransition.setFromY(0f);
-                translateTransition.setByX(10f);
-                translateTransition.setByY(10f);
-                translateTransition.setCycleCount(3);
-                translateTransition.setAutoReverse(true);
-                translateTransition.play();
+                return;
             }
         }
         catch(SQLException ex) {
@@ -162,6 +170,7 @@ public class StudentsController implements Initializable {
              this.studentDateOfBirthLabel.setText(resultSet.getString(6));
              this.studentPayingCompanyLabel.setText(resultSet.getString(7));
              this.studentAcPerformanceLabel.setText(resultSet.getString(8));
+            con.close();
         }
         catch(SQLException ex) {
             System.err.println("Error " + ex);

@@ -1,6 +1,5 @@
 package teachers;
 
-import javafx.animation.TranslateTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,10 +11,9 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import javafx.util.Duration;
+
 import login.LoginController;
 import students.StudentsData;
-
 import administrators.AdministrativeStaffData;
 import dbUtil.dbConnection;
 
@@ -42,7 +40,11 @@ public class TeachersController implements Initializable {
     @FXML
     private Label teacherSubjectLabel;
     @FXML
-    private TextField teacherChangePasswordField;
+    private Label passwordsTeacherDontMatchLabel;
+    @FXML
+    private PasswordField teacherChangePasswordField;
+    @FXML
+    private PasswordField repeateNewPassField;
     @FXML
     private Button logoutButton;
 
@@ -129,25 +131,30 @@ public class TeachersController implements Initializable {
     private void changePassword(ActionEvent event) {
         try {
             if (!this.teacherChangePasswordField.getText().equals("")) {
-                String sql = "UPDATE login SET password = ? WHERE username = ?";
-                Connection con = dbConnection.getConnection();
-                PreparedStatement preparedStatement = con.prepareStatement(sql);
+                if (this.repeateNewPassField.getText().equals(this.teacherChangePasswordField.getText())) {
+                    Connection con = null;
+                    String sql = "UPDATE login SET password = ? WHERE username = ?";
+                    if (con == null) {
+                        con = dbConnection.getConnection();
+                    }
+                    PreparedStatement preparedStatement = con.prepareStatement(sql);
 
-                preparedStatement.setString(1, this.teacherChangePasswordField.getText());
-                preparedStatement.setString(2, this.teacherFirstNameLabel.getText() + '_' + this.teacherLastNameLabel.getText());
+                    preparedStatement.setString(1, this.teacherChangePasswordField.getText());
+                    preparedStatement.setString(2, this.teacherFirstNameLabel.getText() + '_' + this.teacherLastNameLabel.getText());
 
-                preparedStatement.execute();
-                this.teacherChangePasswordField.setText("");
+                    preparedStatement.execute();
+                    this.teacherChangePasswordField.setText("");
+                    this.repeateNewPassField.setText("");
+                    this.passwordsTeacherDontMatchLabel.setText("Password was changed");
+                    preparedStatement.close();
+
+                } else {
+                    this.passwordsTeacherDontMatchLabel.setText("PASSWORDS DON'T MATCH");
+                    this.teacherChangePasswordField.setText("");
+                    this.repeateNewPassField.setText("");
+                }
             } else {
-                TranslateTransition translateTransition = new TranslateTransition(Duration.millis(70),
-                        this.teacherChangePasswordField);
-                translateTransition.setFromX(0f);
-                translateTransition.setFromY(0f);
-                translateTransition.setByX(10f);
-                translateTransition.setByY(11f);
-                translateTransition.setCycleCount(3);
-                translateTransition.setAutoReverse(true);
-                translateTransition.play();
+                return;
             }
         }
         catch(SQLException ex) {
@@ -260,7 +267,6 @@ public class TeachersController implements Initializable {
             loginStage.setTitle("Institute Managing System");
             loginStage.setResizable(false);
             loginStage.show();
-
         }
         catch(IOException ex) {
             System.err.println("Error " + ex);

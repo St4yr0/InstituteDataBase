@@ -11,8 +11,4 @@ public enum division {
     public String value() {
         return name();
     }
-
-//    public static division from_value(String str) {
-//        return valueOf(str);
-//    }
 }

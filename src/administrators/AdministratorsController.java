@@ -169,109 +169,116 @@ public class AdministratorsController implements Initializable {
         studenttable.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("/administrators/editStudent/editorStudentFXML.fxml"));
+                if(event.getClickCount() == 2) {
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("/administrators/editStudent/editorStudentFXML.fxml"));
 
-                try {
-                    loader.load();
+                    try {
+                        loader.load();
+                    } catch (IOException ex) {
+                        System.err.println("Error " + ex);
+                    }
+
+                    EditorStudentController editorStudentController = loader.getController();
+                    editorStudentController.setStudentData(studenttable.getSelectionModel().getSelectedItem().getFIRST_NAME(),
+                            studenttable.getSelectionModel().getSelectedItem().getLAST_NAME(),
+                            studenttable.getSelectionModel().getSelectedItem().getEMAIL(),
+                            studenttable.getSelectionModel().getSelectedItem().getDEPARTMENT(),
+                            studenttable.getSelectionModel().getSelectedItem().getTERM(),
+                            studenttable.getSelectionModel().getSelectedItem().getDATE_OF_BIRTH(),
+                            studenttable.getSelectionModel().getSelectedItem().getPAYING_COMPANY(),
+                            studenttable.getSelectionModel().getSelectedItem().getAC_PERFORMANCE());
+                    Parent root = loader.getRoot();
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root));
+                    stage.setResizable(false);
+                    stage.show();
                 }
-                catch(IOException ex) {
-                    System.err.println("Error " + ex);
-                }
-
-                EditorStudentController editorStudentController = loader.getController();
-                editorStudentController.setStudentData(studenttable.getSelectionModel().getSelectedItem().getFIRST_NAME(),
-                        studenttable.getSelectionModel().getSelectedItem().getLAST_NAME(),
-                        studenttable.getSelectionModel().getSelectedItem().getEMAIL(),
-                        studenttable.getSelectionModel().getSelectedItem().getDEPARTMENT(),
-                        studenttable.getSelectionModel().getSelectedItem().getTERM(),
-                        studenttable.getSelectionModel().getSelectedItem().getDATE_OF_BIRTH(),
-                        studenttable.getSelectionModel().getSelectedItem().getPAYING_COMPANY(),
-                        studenttable.getSelectionModel().getSelectedItem().getAC_PERFORMANCE());
-                Parent root = loader.getRoot();
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root));
-                stage.show();
-
             }
         });
 
         partnerTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("/administrators/editPartnerCompany/editorPartnerCompanyFXML.fxml"));
+                if(event.getClickCount() == 2) {
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("/administrators/editPartnerCompany/editorPartnerCompanyFXML.fxml"));
 
-                try {
-                    loader.load();
-                }
-                catch(IOException ex) {
-                    System.err.println("Error " + ex);
-                }
+                    try {
+                        loader.load();
+                    } catch (IOException ex) {
+                        System.err.println("Error " + ex);
+                    }
 
-                EditorPartnerCompanyController editorPartnerCompanyController = loader.getController();
-                editorPartnerCompanyController.setPartnerData(partnerTable.getSelectionModel().getSelectedItem().getAPPELLATIVE(),
-                        partnerTable.getSelectionModel().getSelectedItem().getREQUISITE(),
-                        partnerTable.getSelectionModel().getSelectedItem().getCONTACT_PERSON(),
-                        partnerTable.getSelectionModel().getSelectedItem().getCONTACT_NUMBER());
-                Parent root = loader.getRoot();
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root));
-                stage.show();
+                    EditorPartnerCompanyController editorPartnerCompanyController = loader.getController();
+                    editorPartnerCompanyController.setPartnerData(partnerTable.getSelectionModel().getSelectedItem().getAPPELLATIVE(),
+                            partnerTable.getSelectionModel().getSelectedItem().getREQUISITE(),
+                            partnerTable.getSelectionModel().getSelectedItem().getCONTACT_PERSON(),
+                            partnerTable.getSelectionModel().getSelectedItem().getCONTACT_NUMBER());
+                    Parent root = loader.getRoot();
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root));
+                    stage.setResizable(false);
+                    stage.show();
+                }
             }
         });
 
         teacherTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("/administrators/editTeacher/editorTeacherFXML.fxml"));
+                if(event.getClickCount() == 2) {
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("/administrators/editTeacher/editorTeacherFXML.fxml"));
 
-                try {
-                    loader.load();
-                }
-                catch(IOException ex) {
-                    System.err.println("Error " + ex);
-                }
+                    try {
+                        loader.load();
+                    } catch (IOException ex) {
+                        System.err.println("Error " + ex);
+                    }
 
-                EditorTeacherController editorTeacherController = loader.getController();
-                editorTeacherController.setTeacherData(teacherTable.getSelectionModel().getSelectedItem().getFIRST_NAME(),
-                        teacherTable.getSelectionModel().getSelectedItem().getLAST_NAME(),
-                        teacherTable.getSelectionModel().getSelectedItem().getEMAIL(),
-                        teacherTable.getSelectionModel().getSelectedItem().getSALARY(),
-                        teacherTable.getSelectionModel().getSelectedItem().getDEGREE(),
-                        teacherTable.getSelectionModel().getSelectedItem().getSUBJECT());
-                Parent root = loader.getRoot();
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root));
-                stage.show();
+                    EditorTeacherController editorTeacherController = loader.getController();
+                    editorTeacherController.setTeacherData(teacherTable.getSelectionModel().getSelectedItem().getFIRST_NAME(),
+                            teacherTable.getSelectionModel().getSelectedItem().getLAST_NAME(),
+                            teacherTable.getSelectionModel().getSelectedItem().getEMAIL(),
+                            teacherTable.getSelectionModel().getSelectedItem().getSALARY(),
+                            teacherTable.getSelectionModel().getSelectedItem().getDEGREE(),
+                            teacherTable.getSelectionModel().getSelectedItem().getSUBJECT());
+                    Parent root = loader.getRoot();
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root));
+                    stage.setResizable(false);
+                    stage.show();
+                }
             }
         });
 
         adstaffTable.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(getClass().getResource("/administrators/editAdministrativeStaff/editorAdStaffFXML.fxml"));
+                if(event.getClickCount() == 2) {
+                    FXMLLoader loader = new FXMLLoader();
+                    loader.setLocation(getClass().getResource("/administrators/editAdministrativeStaff/editorAdStaffFXML.fxml"));
 
-                try {
-                    loader.load();
+                    try {
+                        loader.load();
+                    } catch (IOException ex) {
+                        System.err.println("Error " + ex);
+                    }
+
+                    EditorAdStaffController editorAdStaffController = loader.getController();
+                    editorAdStaffController.setAdStaffData(adstaffTable.getSelectionModel().getSelectedItem().getFIRST_NAME(),
+                            adstaffTable.getSelectionModel().getSelectedItem().getLAST_NAME(),
+                            adstaffTable.getSelectionModel().getSelectedItem().getEMAIL(),
+                            adstaffTable.getSelectionModel().getSelectedItem().getSALARY(),
+                            adstaffTable.getSelectionModel().getSelectedItem().getDEPARTMENT());
+                    Parent root = loader.getRoot();
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root));
+                    stage.setResizable(false);
+                    stage.show();
+
                 }
-                catch(IOException ex) {
-                    System.err.println("Error " + ex);
-                }
-
-                EditorAdStaffController editorAdStaffController = loader.getController();
-                editorAdStaffController.setAdStaffData(adstaffTable.getSelectionModel().getSelectedItem().getFIRST_NAME(),
-                        adstaffTable.getSelectionModel().getSelectedItem().getLAST_NAME(),
-                        adstaffTable.getSelectionModel().getSelectedItem().getEMAIL(),
-                        adstaffTable.getSelectionModel().getSelectedItem().getSALARY(),
-                        adstaffTable.getSelectionModel().getSelectedItem().getDEPARTMENT());
-                Parent root = loader.getRoot();
-                Stage stage = new Stage();
-                stage.setScene(new Scene(root));
-                stage.show();
-
             }
         });
 

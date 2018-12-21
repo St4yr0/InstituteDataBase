@@ -154,7 +154,6 @@ public class EditorAdStaffController implements Initializable {
     void done(ActionEvent event) {
         Stage stage = (Stage)newEmailFIeld.getScene().getWindow();
         stage.close();
-
     }
 
 
