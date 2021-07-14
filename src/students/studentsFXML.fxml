@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="students.StudentsController">
+   <children>
+      <HBox layoutX="358.0" prefHeight="722.0" prefWidth="922.0">
+         <children>
+            <TableView fx:id="studenttable" prefHeight="722.0" prefWidth="925.0">
+               <columns>
+                  <TableColumn fx:id="firstnamecolumn" prefWidth="150.907958984375" text="First Name" />
+                  <TableColumn fx:id="lastnamecolumn" prefWidth="132.59194946289062" text="Last Name" />
+                  <TableColumn fx:id="dateofbirthcolumn" prefWidth="133.2744140625" text="Date Of Birth" />
+                  <TableColumn fx:id="departmentcolumn" prefWidth="171.34124755859375" text="Department" />
+                  <TableColumn fx:id="termcolumn" prefWidth="98.71246337890625" text="Term" />
+                  <TableColumn fx:id="acperformancecolumn" prefWidth="235.24273681640625" text="Ac. performance" />
+               </columns>
+            </TableView>
+         </children>
+      </HBox>
+      <VBox layoutX="-1.0" prefHeight="722.0" prefWidth="361.0">
+         <children>
+            <Label prefHeight="73.0" prefWidth="370.0" text="My Profile">
+               <padding>
+                  <Insets left="110.0" />
+               </padding>
+               <font>
+                  <Font name="System Font" size="27.0" />
+               </font>
+            </Label>
+            <Label prefHeight="27.0" prefWidth="121.0" text="First Name:">
+               <font>
+                  <Font name="Courier Bold" size="13.0" />
+               </font></Label>
+            <Label fx:id="studentFirstNameLabel" prefHeight="28.0" prefWidth="354.0" text="fwfdqe">
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Label>
+            <Label layoutX="10.0" layoutY="125.0" prefHeight="27.0" prefWidth="80.0" text="Last Name:">
+               <font>
+                  <Font name="Courier Bold" size="13.0" />
+               </font></Label>
+            <Label fx:id="studentLastNameLabel" layoutX="25.0" layoutY="165.0" prefHeight="28.0" prefWidth="331.0" text="wwcewec">
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Label>
+            <Label layoutX="10.0" layoutY="165.0" prefHeight="27.0" prefWidth="80.0" text="Email:">
+               <font>
+                  <Font name="Courier Bold" size="13.0" />
+               </font></Label>
+            <Label fx:id="studentEmailLabel" layoutX="25.0" layoutY="233.0" prefHeight="28.0" prefWidth="331.0" text="wcwcwec">
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Label>
+            <Label layoutX="10.0" layoutY="205.0" prefHeight="27.0" prefWidth="177.0" text="Department:">
+               <font>
+                  <Font name="Courier Bold" size="13.0" />
+               </font></Label>
+            <Label fx:id="studentDepartmentLabel" layoutX="25.0" layoutY="301.0" prefHeight="28.0" prefWidth="331.0" text="cwdwdc">
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Label>
+            <Label layoutX="10.0" layoutY="325.0" prefHeight="27.0" prefWidth="80.0" text="Term:">
+               <font>
+                  <Font name="Courier Bold" size="13.0" />
+               </font></Label>
+            <Label fx:id="studentTermLabel" layoutX="25.0" layoutY="369.0" prefHeight="28.0" prefWidth="331.0" text="cwcwec">
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Label>
+            <Label layoutX="10.0" layoutY="245.0" prefHeight="27.0" prefWidth="119.0" text="Date Of Birth:">
+               <font>
+                  <Font name="Courier Bold" size="13.0" />
+               </font></Label>
+            <Label fx:id="studentDateOfBirthLabel" layoutX="25.0" layoutY="437.0" prefHeight="28.0" prefWidth="331.0" text="wdcwdcwc">
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Label>
+            <Label layoutX="10.0" layoutY="285.0" prefHeight="28.0" prefWidth="232.0" text="Paying Company:">
+               <font>
+                  <Font name="Courier Bold" size="13.0" />
+               </font></Label>
+            <Label fx:id="studentPayingCompanyLabel" layoutX="25.0" layoutY="505.0" prefHeight="28.0" prefWidth="311.0" text="wcwecec">
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Label>
+            <Label layoutX="10.0" layoutY="365.0" prefHeight="27.0" prefWidth="243.0" text="Academical Performance:">
+               <font>
+                  <Font name="Courier Bold" size="13.0" />
+               </font></Label>
+            <Label fx:id="studentAcPerformanceLabel" layoutX="25.0" layoutY="573.0" prefHeight="28.0" prefWidth="311.0" text="cwcwcwc">
+               <VBox.margin>
+                  <Insets left="20.0" />
+               </VBox.margin>
+            </Label>
+            <Label prefHeight="6.0" prefWidth="331.0" />
+            <PasswordField fx:id="studentChangePasswrodFireld" promptText="Enter new Password" />
+            <PasswordField fx:id="repeateNewPassField" promptText="Repeate new Password" />
+            <Label fx:id="passwordsDontMatchLabel" prefHeight="26.0" prefWidth="255.0" />
+            <Button mnemonicParsing="false" onAction="#changePassword" prefHeight="27.0" prefWidth="393.0" text="Change Password" />
+            <Button mnemonicParsing="false" onAction="#loadOtherStudentsData" prefHeight="27.0" prefWidth="333.0" text="Load Other Students" />
+            <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logout" prefHeight="27.0" prefWidth="92.0" text="Logout" />
+         </children>
+         <padding>
+            <Insets left="15.0" right="15.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>
